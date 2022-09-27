@@ -39,7 +39,7 @@ const days = args.d
 if (days == 0) {
   console.log("Today's expected precipitation hours are " + data.daily.precipitation_hours[0])
 } else if (days > 1) {
-  console.log("In " + days + " days the expected precipitation hours are " + console.log("Today's expected precipitation hours are " + data.daily.precipitation_hours[days]))
+  console.log("In " + days + " days the expected precipitation hours are " + data.daily.precipitation_hours[days]);
 } else {
   console.log("Tomorrow's precipitation hours are " + data.daily.precipitation_hours[1])
 }
