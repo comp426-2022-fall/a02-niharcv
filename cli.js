@@ -34,7 +34,7 @@ if(args.n || args.e) {
 }
 
 if(args.s || args.s) {
-  if (args.s > 0 ) { 
+  if (args.s > 0 || ) { 
     console.log("Latitude must be in range")
     process.exit(0)
   }
@@ -52,6 +52,14 @@ if(args.e) { long = args.e; }
 if(args.w) { long = args.w * -1; }
 if(args.t) { timezone = args.t; }
 timezone.replace("/", "%2");
+
+if(!lat) {
+  console.log("Latitude must be in range")
+  process.exit(0)
+} else if (!long) {
+  console.log("Longitude must be in range")
+  process.exit(0)
+}
 
 var url = 'https://api.open-meteo.com/v1/forecast?latitude=' + String(lat) + '&longitude=' + String(long) + '&hourly=temperature_2m&daily=precipitation_hours&current_weather=true&temperature_unit=fahrenheit&windspeed_unit=mph&precipitation_unit=inch&timezone=' + timezone;
 const response = await fetch(url);
