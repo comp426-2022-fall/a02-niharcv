@@ -34,7 +34,7 @@ if(args.n || args.e) {
 }
 
 if(args.s || args.s) {
-  if (args.s > 0 || ) { 
+  if (args.s > 0) { 
     console.log("Latitude must be in range")
     process.exit(0)
   }
