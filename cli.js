@@ -18,6 +18,34 @@ var timezone = moment.tz.guess();
 var lat;
 var long;
 
+// checking for lat and long correct
+
+if(args.n || args.e) {
+  if (args.n < 0 ) { 
+    console.log("Latitude must be in range")
+    process.exit(0)
+  }
+
+  if(args.e < 0) {
+    console.log("Longitude must be in range")
+    process.exit(0)
+  }
+
+}
+
+if(args.s || args.s) {
+  if (args.s > 0 ) { 
+    console.log("Latitude must be in range")
+    process.exit(0)
+  }
+
+  if(args.w > 0) {
+    console.log("Longitude must be in range")
+    process.exit(0)
+  }
+  
+}
+
 if(args.n) { lat = args.n; }
 if(args.s) { lat = args.s * -1; }
 if(args.e) { long = args.e; }
@@ -36,12 +64,18 @@ if(args.j) {
 
 const days = args.d 
 
-if (days == 0) {
-  console.log("Today's expected precipitation hours are " + data.daily.precipitation_hours[0])
-} else if (days > 1) {
-  console.log("In " + days + " days the expected precipitation hours are " + data.daily.precipitation_hours[days]);
+if (data.daily.precipitation_hours[days] == 0) {
+  console.log("You will not need your galoshes ")
 } else {
-  console.log("Tomorrow's precipitation hours are " + data.daily.precipitation_hours[1])
+  console.log("You might need your galoshes ")
+}
+
+if (days == 0) {
+  console.log("today.")
+} else if (days > 1) {
+  console.log("in " + days + " days.")
+} else {
+  console.log("tomorrow.")
 }
 
 process.exit(0);
